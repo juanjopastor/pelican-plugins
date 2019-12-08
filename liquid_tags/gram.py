@@ -44,11 +44,12 @@ except ImportError:
     from urllib import urlopen
 from .mdx_liquid_tags import LiquidTags
 
-SYNTAX = '{% gram shortcode [size] [width] [class name(s)] [title text | "title text" ["alt text"]] %}'
+SYNTAX = '{% gram shortcode [size] [class name(s)] [title text | "title text" ["alt text"]] %}'
 
 # Regular expression for full syntax
 # ReGram = re.compile("""(?P<shortcode>\S+)(?:\s+(?P<size>[tml]?))?(?:\s+(?P<width>\d*))?(?:\s+(?P<class>\S*))?(?P<title>\s+.+)?""")
-ReGram = re.compile("""(?P<shortcode>\S+)(?:\s+(?P<size>[tml]?))?(?:\s+(?P<width>\d*))?(?:\s+(?P<class>[^']*))?(?P<title>.+)?""")
+# ReGram = re.compile("""(?P<shortcode>\S+)(?:\s+(?P<size>[tml]?))?(?:\s+(?P<width>\d*))?(?:\s+(?P<class>[^']*))?(?P<title>.+)?""")
+ReGram = re.compile("""(?P<shortcode>\S+)(?:\s+(?P<size>[tml]?))?(?:\s+(?P<class>[^']*))?(?P<title>.+)?""")
 
 # Regular expression to split the title and alt text
 ReTitleAlt = re.compile("""(?:"|')(?P<title>[^"']+)?(?:"|')\s+(?:"|')(?P<alt>[^"']+)?(?:"|')""")
