@@ -17,12 +17,12 @@ from pelican import signals
 def main(pelican):
     for f in glob.iglob(pelican.output_path + '/**/*.htm*', recursive=True):
         process_single_html_file(f, overwrite=True)
-    for f in glob.iglob(pelican.output_path + '/**/*.css', recursive=True):
-        if '.min.' not in f:
-            process_single_css_file(f, overwrite=True)
-    for f in glob.iglob(pelican.output_path + '/**/*.js', recursive=True):
-        if '.min.' not in f:
-            process_single_js_file(f, overwrite=True)
+#    for f in glob.iglob(pelican.output_path + '/**/*.css', recursive=True):
+#        if '.min.' not in f:
+#            process_single_css_file(f, overwrite=True)
+#    for f in glob.iglob(pelican.output_path + '/**/*.js', recursive=True):
+#        if '.min.' not in f:
+#            process_single_js_file(f, overwrite=True)
 
 def register():
     signals.finalized.connect(main)
