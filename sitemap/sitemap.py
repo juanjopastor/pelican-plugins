@@ -161,13 +161,17 @@ class SitemapGenerator(object):
             pri = self.priorities['articles']
             chfreq = self.changefreqs['articles']
         elif isinstance(page, contents.Page):
-            pri = self.priorities['pages']
-            chfreq = self.changefreqs['pages']
+            if page.save_as == 'index.html' or page.save_as == 'index.php':
+                pri = self.priorities['indexes']
+                chfreq = self.changefreqs['indexes']
+            else:
+                pri = self.priorities['pages']
+                chfreq = self.changefreqs['pages']
         else:
             pri = self.priorities['indexes']
             chfreq = self.changefreqs['indexes']
 
-        pageurl = '' if page.url == 'index.html' else page.url
+        pageurl = '' if (page.url == 'index.html' or page.url == 'index.php' or page.save_as == 'index.html' or page.save_as == 'index.php') else page.url
 
         #Exclude URLs from the sitemap:
         if self.format == 'xml':
@@ -233,6 +237,7 @@ class SitemapGenerator(object):
                                                'save_as'])
 
             for standard_page_url in ['index.html',
+                                      'index.php',
                                       'archives.html',
                                       'tags.html',
                                       'categories.html']:
