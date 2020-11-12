@@ -15,12 +15,12 @@ Example
 Output
 ------
 
-<span class="videobox">
+<div class="videobox">
     <iframe
         width="640" height="480" src="https://www.youtube.com/embed/dQw4w9WgXcQ"
         frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen>
     </iframe>
-</span>
+</div>
 
 [1] https://gist.github.com/jamieowen/2063748
 """
@@ -47,13 +47,13 @@ def youtube(preprocessor, tag, markup):
 
     if youtube_id:
         youtube_out = """
-            <span class="videobox">
+            <div class="videobox">
                 <iframe width="{width}" height="{height}"
                     src='https://www.youtube.com/embed/{youtube_id}'
                     frameborder='0' webkitAllowFullScreen mozallowfullscreen
                     allowFullScreen>
                 </iframe>
-            </span>
+            </div>
         """.format(width=width, height=height, youtube_id=youtube_id).strip()
     else:
         raise ValueError("Error processing input, "
